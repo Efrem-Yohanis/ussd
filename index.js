@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.listen(3000,()=>{
+    console.log("running 2...")
+})
 app.post('/ussd', (req, res) => {
     // Read the variables sent via POST from our API
     const {
@@ -35,7 +37,7 @@ app.post('/ussd', (req, res) => {
         // This is a terminal request. Note how we start the response with END
         response = `END Your account number is ${accountNumber}`;
     }
-
+    //res.json(response)
     // Send the response back to the API
     res.set('Content-Type: text/plain');
     res.send(response);
